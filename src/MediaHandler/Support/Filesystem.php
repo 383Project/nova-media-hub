@@ -111,7 +111,9 @@ class Filesystem
             ? $media->disk
             : $media->conversions_disk;
 
-        $this->filesystem->disk($diskName)->makeDirectory($directory);
+        if (!empty($directory)) {
+            $this->filesystem->disk($diskName)->makeDirectory($directory);
+        }
 
         return $directory;
     }
