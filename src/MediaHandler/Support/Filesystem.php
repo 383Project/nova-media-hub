@@ -50,7 +50,7 @@ class Filesystem
 
         // Check if main media folder is empty, if so, delete it
         $mainDisk = $this->filesystem->disk($media->disk);
-        if ($mainDisk->exists($media->path)) {
+        if (!empty($media->path) && $mainDisk->exists($media->path)) {
             $fileCount = count($convDisk->files($media->path));
             $dirCount = count(array_filter(
                 $convDisk->allDirectories($media->path),
